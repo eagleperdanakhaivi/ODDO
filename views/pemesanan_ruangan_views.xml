@@ -1,0 +1,39 @@
+<!-- views/pemesanan_ruangan_views.xml -->
+<odoo>
+    <record id="view_pemesanan_ruangan_tree" model="ir.ui.view">
+        <field name="name">pemesanan.ruangan.tree</field>
+        <field name="model">pemesanan.ruangan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nomor_pemesanan"/>
+                <field name="ruangan_id"/>
+                <field name="nama_pemesanan"/>
+                <field name="tanggal_pemesanan"/>
+                <field name="status_pemesanan"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_pemesanan_ruangan_form" model="ir.ui.view">
+        <field name="name">pemesanan.ruangan.form</field>
+        <field name="model">pemesanan.ruangan</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="nomor_pemesanan" readonly="1"/>
+                        <field name="ruangan_id"/>
+                        <field name="nama_pemesanan"/>
+                        <field name="tanggal_pemesanan"/>
+                        <field name="status_pemesanan"/>
+                        <field name="catatan_pemesanan"/>
+                    </group>
+                    <footer>
+                        <button string="Proses Pemesanan" type="object" name="action_proses_pemesanan" attrs="{'invisible': [('status_pemesanan', '!=', 'draft')]}"/>
+                        <button string="Selesai" type="object" name="action_selesai_pemesanan" attrs="{'invisible': [('status_pemesanan', '!=', 'on_going')]}"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
